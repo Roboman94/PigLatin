@@ -9,30 +9,35 @@ namespace PigLatin
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Enter word here to change to pig latin: ");
-            string input = Console.ReadLine();
-            Console.WriteLine();
-
-            //string const2 = " ";
-            string firstlet = input.Remove(1);
-            string remaining = input.Substring(1);
-            int vowelValid = VowelValid(input, remaining);
-            string remVowel = RemainingIfVowel(input, remaining);
-            //string remConst = RemainingConst(input, remaining, const2);
-
-
-            if (vowelValid == 1)
+            bool proceeding = true;
+            while (proceeding == true)
             {
-                Console.WriteLine(firstlet + remVowel + "way");
+                Console.WriteLine("Enter word here to change to pig latin: ");
+                string input = Console.ReadLine();
+                Console.WriteLine();
+
+                //string const2 = " ";
+                string firstlet = input.Remove(1);
+                string remaining = input.Substring(1);
+                int vowelValid = VowelValid(input, remaining);
+                string remVowel = RemainingIfVowel(input, remaining);
+                //string remConst = RemainingConst(input, remaining, const2);
+
+
+                if (vowelValid == 1)
+                {
+                    Console.WriteLine(firstlet + remVowel + "way");
+
+                }
+                else
+                {
+                    Console.WriteLine(remVowel + firstlet + "ay");
+                }
+
+                proceeding = Proceed();
+
 
             }
-            else
-            {
-                Console.WriteLine(remVowel + firstlet + "ay");
-            }
-
-
         }
 
 
@@ -112,13 +117,34 @@ namespace PigLatin
             }
             return 0;
         }
+
+
+
+
+
+        public static bool Proceed()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Would you like to continue? (y/n) ");
+            string proceed = Console.ReadLine();
+            if (proceed.ToLower().StartsWith("y"))
+            {
+                return true;
+            }
+            if (proceed.ToLower().StartsWith("n"))
+            {
+                Console.WriteLine("thank you!");
+                Console.WriteLine();
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry. Please try again");
+                return Proceed();
+            }
+
+
+        }
+
     }
-
-
-
-
-
-
-
-
 }
