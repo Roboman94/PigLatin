@@ -13,7 +13,7 @@ namespace PigLatin
             while (proceeding == true)
             {
                 Console.WriteLine("Enter word here to change to pig latin: ");
-                string input = Console.ReadLine();
+                string input = Console.ReadLine().ToLower();
                 Console.WriteLine();
 
                 //string const2 = " ";
@@ -22,16 +22,19 @@ namespace PigLatin
                 int vowelValid = VowelValid(input, remaining);
                 string remVowel = RemainingIfVowel(input, remaining);
                 //string remConst = RemainingConst(input, remaining, const2);
-
+                string[] constspl1 = null;
+                string[] constspl2 = ConstSpl(input, remaining, constspl1);
 
                 if (vowelValid == 1)
                 {
                     Console.WriteLine(firstlet + remVowel + "way");
+                    Console.WriteLine("{0}", constspl2);
 
                 }
                 else
                 {
                     Console.WriteLine(remVowel + firstlet + "ay");
+                    Console.WriteLine("{0}", constspl2);
                 }
 
                 proceeding = Proceed();
@@ -96,6 +99,64 @@ namespace PigLatin
             }
             return "error";
         }
+
+
+
+
+
+        public static string[] ConstSpl(string input, string remaining, string[] constspl1)
+        {
+            int i = 0;
+            char[] vowels = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z' };
+            foreach (char testedchar in vowels)
+            {
+
+                while (remaining.StartsWith(testedchar))
+                {
+                    remaining = input.Substring(i);
+                    i++;
+                }
+
+                if (input.StartsWith(testedchar))
+                {
+
+                    constspl1 = input.Split(testedchar);
+                }
+                {
+                    return null;
+
+                }
+
+
+            }
+            return constspl1;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public static int VowelValid(string input, string remaining)
