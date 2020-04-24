@@ -11,11 +11,11 @@ namespace ConsoleApp8
             {
                 Console.WriteLine("Welcome to the PigLatin generator!");
                 Console.WriteLine("Please enter message");
-                string input = Console.ReadLine().ToLower().Trim();
-                string[] words = input.Split();
                 //Prompts user to enter message
-                //turns input to lowercase and cleans unneccassary spaces
-                //sends message to string array and splits words
+                string input = Console.ReadLine().ToLower().Trim();
+                //turns input to lowercase and cleans out nonchars
+                string[] words = input.Split();
+                //sends message to string array, for each word is an index
 
                 foreach (string word in words)
                 {
