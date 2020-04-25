@@ -15,53 +15,58 @@ namespace ConsoleApp8
                 string input = Console.ReadLine().ToLower().Trim();
                 //turns input to lowercase and cleans out trailing spaces
                 string[] words = input.Split();
-                //sends message to string array, for each word is an index
+                //sends message to string array each word is an index
 
                 foreach (string word in words)
                 {
+
                     TranslateWord(word);
                 }
                 //for each word in the message, convert to piglatin
-                //fin
+
+                //fin?
                 proceeding = Proceed();
             }
         }
 
 
+
         public static void TranslateWord(string input)
         {
+         
             char[] word = input.ToCharArray();
             //takes user word and changes it to a char array
+
             string output = "";
             //define output as ""
             int firstVowelIndex = FirstVowel(word);
-            //Calls FirstVowel method and returns index position of vowel
+            //Calls FirstVowel method and returns first vowel index
             if (firstVowelIndex == 0)
-            //if vowel index starts with a vowel
+            //if first letter starts with a vowel
             {
                 output = input + "way";
-                //resulting output as input ending in way
+                //output is input and ending in way
             }
             else if (firstVowelIndex == -1)
             //if no vowels are found
             {
                 output = input;
-                //print output as input
+                //output is input
             }
             else
-            //if not starting with a vowel
+            //contains vowel But starts with consonants
             {
                 string prefix = input.Substring(firstVowelIndex);
-                
-                //makes string with substring of consonants starting with the first vowel index
+                //makes string with substring starting at the first vowel index
 
                 string postfix = input.Substring(0, firstVowelIndex) + "ay";
-               
                 //makes string with substring of consonants before the first vowel index, then ending with ay
+
                 output = prefix + postfix;
-                //arranges vowel before consonants-ay
+                //arranges vowel before consonants and ends in ay
             }
             
+           
             Console.Write(output + " ");
             //result
         }
@@ -72,7 +77,7 @@ namespace ConsoleApp8
             //loop for length of word array
             {
                 char letter = word[i];
-                //reassigns letter as current letter in word array
+                //reassigns letter as indexed letter in word array
                 if (IsVowel(letter))
                 //if indexed letter is a vowel
                 {
@@ -85,7 +90,6 @@ namespace ConsoleApp8
             //returns error message if no vowels are found
         }
 
-
         public static bool IsVowel(char c)
         {
             char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
@@ -95,7 +99,7 @@ namespace ConsoleApp8
             //for each cooresponding vowel
             {
                 if (vowel == c)
-                //if cooresponding vowel matches indexed letter variable
+                //if cooresponding vowel matches indexed letter variable from FirstVowel input
                 {
                     return true;
                 }
