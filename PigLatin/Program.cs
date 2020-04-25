@@ -13,7 +13,7 @@ namespace ConsoleApp8
                 Console.WriteLine("Please enter message");
                 //Prompts user to enter message
                 string input = Console.ReadLine().ToLower().Trim();
-                //turns input to lowercase and cleans out nonchars
+                //turns input to lowercase and cleans out trailing spaces
                 string[] words = input.Split();
                 //sends message to string array, for each word is an index
 
