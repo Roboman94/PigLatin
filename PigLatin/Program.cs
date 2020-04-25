@@ -99,7 +99,7 @@ namespace ConsoleApp8
             //for each cooresponding vowel
             {
                 if (vowel == c)
-                //if cooresponding vowel matches indexed letter variable from FirstVowel input
+                //if cooresponding vowel matches indexed letter variable from FirstVowel(letter)
                 {
                     return true;
                 }
