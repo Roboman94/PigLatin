@@ -51,7 +51,7 @@ namespace ConsoleApp8
             //if no vowels are found
             {
                 output = input;
-                //output is input
+                //output returns VowelIndex(word) as an error message. Vowels are needed for pig latin.
             }
             else
             //contains vowel But starts with consonants
